@@ -24,13 +24,11 @@ const ProductPage: React.FC = () => {
     return () => {
         // Component unmounting logic
         setImage('');
-        // console.log(image)
       };
   }, [id]);
 
   const [quantity, setQuantity] = useState(1);
   const [image, setImage] = useState(product?.image);
-//   console.log(image)
   const productWithQuantity: CartItem = { ...product!, quantity: quantity };
 
   const changeImage = (e: any) => {
@@ -60,7 +58,6 @@ const ProductPage: React.FC = () => {
   };
 
   const handleAddToCart = () => {
-    // console.log(product);
     dispatch(addProductToCart(productWithQuantity));
     showNotify();
   };
