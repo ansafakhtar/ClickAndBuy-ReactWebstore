@@ -104,7 +104,7 @@ const NavBar: React.FC = () => {
               </Link>
               <Link
                 onClick={() => window.scrollTo(0, 0)}
-                to="/categories/product/19"
+                to="/categories/product/1"
               >
                 product page
               </Link>

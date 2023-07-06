@@ -21,9 +21,8 @@ const BestSellers: React.FC = () => {
         <h2 className="container proud-h2">Our Best Selling Products</h2>
         <div className="container">
           <div className="products-grid">
-            {/* <ProductItem /> */}
             {products.map((book) => (
-              <ProductCard key={book.id} {...book} />
+              book.id < 10 && <ProductCard key={book.id} {...book} />
             ))}
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
+import "./CategoriesTypes.css";
 
 const CategoriesTypes = (): JSX.Element => {
   const [btnName, setBtnName] = useState("All");
@@ -22,9 +23,9 @@ const CategoriesTypes = (): JSX.Element => {
             <Link to="all" onClick={() => handleBtnName("all")}>
               <button>All</button>
             </Link>
-            <Link to="furnitures">
+            <Link to="furniture">
               <button onClick={() => handleBtnName("furnitures")}>
-                Furnitures
+                Furniture
               </button>
             </Link>
             <Link to="electronics">
@@ -40,11 +41,6 @@ const CategoriesTypes = (): JSX.Element => {
             </Link>
             <Link to="chairs">
               <button onClick={() => handleBtnName("chairs")}>Chairs</button>
-            </Link>
-            <Link to="skin-care">
-              <button onClick={() => handleBtnName("skin care")}>
-                Skin Care
-              </button>
             </Link>
           </div>
         </div>
