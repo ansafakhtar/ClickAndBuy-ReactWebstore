@@ -17,7 +17,7 @@ function SliderItem() {
 
   const productsData: ProductState = useSelector(productsSelector);
   const { products, loading } = productsData;
-  const filteredItems = products.filter((item) => item.id >= 2);
+  const filteredItems = products.filter((item) => item.id >= 7);
 
   return loading === "loaded" ? (
     <>

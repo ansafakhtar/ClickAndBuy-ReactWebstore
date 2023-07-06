@@ -1,28 +1,25 @@
+import Banner from "../components/Banner/Banner";
 import BestSellers from "../components/BestSellers/BestSellers";
-// import Footer from "../components/Footer/Footer";
+import Footer from "../components/Footer/Footer";
+import HeroSection from "../components/HeroSection/HeroSection";
 import Slider from "../components/Slider/Slider";
+import Banner1 from "../images/banner1.jpg";
 
 const HomePage: React.FC = () => {
-    return (
-      <>
-        {/* <Hero /> */}
-        <BestSellers />
-        <Slider />
-        {/* <Banner
-          title="Creative harmonious living"
-          text=" RAOUF Products are all made to standard sizes so that you can mix and match them freely."
-          img={Banner1}
-        />
-        <TrendingSlider />
-        <BannerReverse
-          title="Comfortable & Elegante Living"
-          text=" RAOUF Products are all made to standard sizes so that you can mix and match them freely."
-          img={Banner2}
-        />
-        <Newsletter /> */}
-        {/* <Footer /> */}
-      </>
-    );
-  }
-  
-  export default HomePage;
+  return (
+    <>
+      <h1>Welcome to our store!</h1>
+      <HeroSection />
+      <BestSellers />
+      <Banner
+        title="Elevate Your Space"
+        text="We offer a wide range of exquisite products that'll enhance your way of living."
+        img={Banner1}
+      />
+      <Slider />
+      <Footer />
+    </>
+  );
+};
+
+export default HomePage;

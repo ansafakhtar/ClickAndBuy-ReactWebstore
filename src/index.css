@@ -22,3 +22,10 @@ html {
   margin: 0 auto;
   padding: 0 19px;
 }
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 15rem;
+}

@@ -1,11 +1,14 @@
-import * as React from 'react';
+import * as React from "react";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer: React.FunctionComponent = () => {
-  return (<>
+  return (
+    <>
       <footer>
         <div className="footer-links">
-          <a href="#">About</a>
+          <Link to="/aboutus">About</Link>
+          {/* <a href="#">About</a> */}
           <a href="#">Store locator</a>
           <a href="#">FAQs</a>
           <a href="#">News</a>
@@ -13,7 +16,7 @@ const Footer: React.FunctionComponent = () => {
           <a href="#">Contact Us</a>
         </div>
         <p className="love">
-          Design &nbsp; by{" "}
+          Made &nbsp; by{" "}
           <a
             target="_blank"
             rel="noreferrer"
@@ -23,8 +26,9 @@ const Footer: React.FunctionComponent = () => {
             &nbsp; Ansaf
           </a>
         </p>
-      </footer>  
-  </>);
+      </footer>
+    </>
+  );
 };
 
 export default Footer;

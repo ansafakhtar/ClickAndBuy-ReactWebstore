@@ -10,7 +10,6 @@ const ProductCard = (product: ProductProps): JSX.Element => {
     <>
       <div key={product.id} className="product normal">
         <Link
-          // onClick={() => window.top(0, 0)}
           to={`/categories/product/${product.id}`}
         >
           <div className="product-header">

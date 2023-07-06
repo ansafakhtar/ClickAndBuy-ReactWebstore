@@ -3,7 +3,7 @@ import Slider from "../components/Slider/Slider";
 import { useParams } from "react-router-dom";
 import { addProductToCart } from "../domain/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import "../components/ProductPage.css";
+import "../components/ProductCard/ProductPage.css";
 import { CartItem } from "../domain/cart/types";
 import { AppDispatch } from "../store/store";
 import {
@@ -11,6 +11,7 @@ import {
   singleProductSelector,
 } from "../domain/products/productSlice";
 import { SingleProductState } from "../domain/products/types";
+import Footer from "../components/Footer/Footer";
 
 const ProductPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,13 +25,11 @@ const ProductPage: React.FC = () => {
     return () => {
         // Component unmounting logic
         setImage('');
-        // console.log(image)
       };
   }, [id]);
 
   const [quantity, setQuantity] = useState(1);
   const [image, setImage] = useState(product?.image);
-//   console.log(image)
   const productWithQuantity: CartItem = { ...product!, quantity: quantity };
 
   const changeImage = (e: any) => {
@@ -60,7 +59,6 @@ const ProductPage: React.FC = () => {
   };
 
   const handleAddToCart = () => {
-    // console.log(product);
     dispatch(addProductToCart(productWithQuantity));
     showNotify();
   };
@@ -138,6 +136,7 @@ const ProductPage: React.FC = () => {
         </div>
         <Slider />
       </div>
+      <Footer />
     </>
   ) : loading === "not loaded" ? (
     <h1>Not Loaded....</h1>

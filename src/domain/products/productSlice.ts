@@ -5,10 +5,10 @@ import { products } from "./products";
 import { Product, ProductState, SingleProductState } from "./types";
 
 export const getProducts = createAsyncThunk<Product[]>(
-  "books/get",
+  "product/get",
   async () => {
     // simulating a delay
-    await delay(300);
+    await delay(700);
     return products;
   }
 );
@@ -20,21 +20,12 @@ export const getProductById = createAsyncThunk<Product, string>(
   }
 );
 
-// The code below is how a real world async thunk would look like
-
-// export const getBooks = createAsyncThunk<Book[]>('books/get', async (_, thunkApi) => {
-//   const {rejectWithValue, signal} = thunkApi;
-
-//   const response = await fetch('/books', { signal });
-
-//   const data = await response.json();
-
-//   if (response.status !== 200) {
-//     return rejectWithValue(data as string)
-//   }
-
-//   return data as Book[];
-// })
+export const getProductByCategory = createAsyncThunk<Product[], string>(
+  "productsByCategory/get",
+  async (category: string) => {
+    return products.filter((product) => product.category === category);
+  }
+);
 
 const initialState: ProductState = {
   products: [],
@@ -93,9 +84,41 @@ const singleProductSlice = createSlice({
   },
 });
 
+
+const initialState3: ProductState = {
+  products: [],
+  loading: "not loaded",
+};
+
+const productsByCategorySlice = createSlice({
+  name: "productByCategory",
+  initialState: initialState3,
+  reducers: {
+    cleanupProductsByCategory: () => initialState,
+  },
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(getProductByCategory.pending, (state) => {
+        state.loading = "loading";
+      })
+      .addCase(getProductByCategory.fulfilled, (state, action) => {
+        state.loading = "loaded";
+        state.products = action.payload;
+      })
+      .addCase(getProductByCategory.rejected, (state, action) => {
+        state.loading = "error";
+        state.error = (action.payload as string) ?? action.error.message;
+      });
+  },
+});
+
 export const productsSliceReducer = productSlice.reducer;
 export const singleProductSliceReducer = singleProductSlice.reducer;
+export const productsByCategorySliceReducer = productsByCategorySlice.reducer;
 export const { cleanupProducts } = productSlice.actions;
 export const { cleanupProduct } = singleProductSlice.actions;
+export const { cleanupProductsByCategory } = productsByCategorySlice.actions;
 export const productsSelector = (state: RootState) => state.products;
 export const singleProductSelector = (state: RootState) => state.product;
+export const productsByCategorySelector = (state: RootState) => state.productsByCategory;
